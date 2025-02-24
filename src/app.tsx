@@ -2,10 +2,14 @@
 import Logo from '@/assets/logo.png';
 import { GlobalFooter } from '@/components/GlobalFooter';
 import { GlobalHeaderRight } from '@/components/GlobalHeader/RightContent';
-import { getLoginUser } from '@/services/user';
+import { getLoginUser } from '@/services/userService';
 import { RequestConfig } from '@@/plugin-request/request';
 import './global.less';
 
+interface RequestConfigs extends RequestConfig {
+  baseUrl: string;
+  <T>(url:string,config:RequestConfig):Promise<T>
+}
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
 // 更多信息见文档：https://umijs.org/docs/api/runtime-config#getinitialstate
 export async function getInitialState(): Promise<InitialState> {
@@ -39,16 +43,16 @@ export const layout = () => {
 };
 
 const isDev = process.env.NODE_ENV === 'development';
+//
+// // @ts-ignore
+// /**
+//  * 全局请求配置
+//  * */
 
-// @ts-ignore
-/**
- * 全局请求配置
- * */
-export const request: RequestConfig = {
-  baseURL: isDev ? 'http://localhost:3000' : '你的线上接口地址',
+export const request: RequestConfigs = {
+  baseURL: isDev ? 'http://localhost:3000/' : '你的线上接口地址',
   timeout: 10000,
   withCredentials: true,
-  // @ts-ignore
   errorConfig: {
     errorHandler() {},
     errorThrower() {},

@@ -17,10 +17,14 @@
     "@ant-design/pro-layout": "^7.22.3",
     "@umijs/max": "^4.4.5",
     "@umijs/plugin-model": "^2.6.2",
+    "@umijs/plugins": "^4.4.5",
     "antd": "^5.4.0",
     "classnames": "^2.5.1",
+    "copy-to-clipboard": "^3.3.3",
     "monaco-editor-webpack-plugin": "^7.1.0",
-    "query-string": "^9.1.1"
+    "query-string": "^9.1.1",
+    "react-monaco-editor": "^0.58.0",
+    "react-router-dom": "^7.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",

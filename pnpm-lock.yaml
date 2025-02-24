@@ -22,29 +22,41 @@ importers:
         version: 7.22.3(antd@5.24.1(date-fns@2.30.0)(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@umijs/max':
         specifier: ^4.4.5
-        version: 4.4.5(@babel/core@7.23.6)(@types/node@22.13.5)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(lightningcss@1.22.1)(prettier@2.8.8)(rc-field-form@2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)
+        version: 4.4.5(@babel/core@7.26.9)(@models/node@22.13.5)(@models/react-dom@18.3.5(@models/react@18.3.18))(@models/react@18.3.18)(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(lightningcss@1.22.1)(prettier@2.8.8)(rc-field-form@2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)
       '@umijs/plugin-model':
         specifier: ^2.6.2
-        version: 2.6.2(umi@4.4.5(@babel/core@7.23.6)(@types/node@22.13.5)(@types/react@18.3.18)(eslint@8.35.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(stylelint@14.8.2)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0))
+        version: 2.6.2(umi@4.4.5(@babel/core@7.26.9)(@models/node@22.13.5)(@models/react@18.3.18)(eslint@8.35.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(stylelint@14.8.2)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0))
+      '@umijs/plugins':
+        specifier: ^4.4.5
+        version: 4.4.5(@babel/core@7.26.9)(@models/react-dom@18.3.5(@models/react@18.3.18))(@models/react@18.3.18)(antd@5.24.1(date-fns@2.30.0)(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(rc-field-form@2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       antd:
         specifier: ^5.4.0
         version: 5.24.1(date-fns@2.30.0)(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
+      copy-to-clipboard:
+        specifier: ^3.3.3
+        version: 3.3.3
       monaco-editor-webpack-plugin:
         specifier: ^7.1.0
         version: 7.1.0(monaco-editor@0.52.2)(webpack@5.98.0)
       query-string:
         specifier: ^9.1.1
         version: 9.1.1
+      react-monaco-editor:
+        specifier: ^0.58.0
+        version: 0.58.0(monaco-editor@0.52.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react-router-dom:
+        specifier: ^7.2.0
+        version: 7.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@types/react':
         specifier: ^18.0.33
         version: 18.3.18
       '@types/react-dom':
         specifier: ^18.0.11
-        version: 18.3.5(@types/react@18.3.18)
+        version: 18.3.5(@models/react@18.3.18)
       husky:
         specifier: ^9
         version: 9.1.7
@@ -1356,6 +1368,9 @@ packages:
   '@types/babel__traverse@7.20.6':
     resolution: {integrity: sha512-r1bzfrm0tomOI8g1SzvCaQHo6Lcv6zu0EA+W2kHrt8dyrHQxGzBBL4kdkzIS+jBMV+EYcMAEAqXqYaLJq5rOZg==}
 
+  '@types/cookie@0.6.0':
+    resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
+
   '@types/eslint-scope@3.7.7':
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}
 
@@ -1376,7 +1391,7 @@ packages:
 
   '@types/history@5.0.0':
     resolution: {integrity: sha512-hy8b7Y1J8OGe6LbAjj3xniQrj3v6lsivCcrmf4TzSgPzLkhIeKgc5IZnT7ReIqmEuodjfO8EYAuoFvIrHi/+jQ==}
-    deprecated: This is a stub types definition. history provides its own type definitions, so you do not need this installed.
+    deprecated: This is a stub models definition. history provides its own type definitions, so you do not need this installed.
 
   '@types/hoist-non-react-statics@3.3.6':
     resolution: {integrity: sha512-lPByRJUer/iN/xa4qpyL0qmL11DqNW81iU/IG1S3uvRUq4oKagz8VCxZjiWkumgt66YT3vOdDgZ0o32sGKtCEw==}
@@ -2319,6 +2334,10 @@ packages:
   cookie@0.7.1:
     resolution: {integrity: sha512-6DnInpx7SJ2AK3+CTUE/ZM0vWTUboZCegxhC2xiIydHR9jNuTAASBrfEpHhiGOZw/nX51bHt6YQl8jsGo4y/0w==}
     engines: {node: '>= 0.6'}
+
+  cookie@1.0.2:
+    resolution: {integrity: sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==}
+    engines: {node: '>=18'}
 
   copy-anything@2.0.6:
     resolution: {integrity: sha512-1j20GZTsvKNkc4BY3NpMOM8tt///wY3FpIzozTOFO2ffuZcV61nojHXVKIy3WM+7ADCy5FVhdZYHYDdgTU0yJw==}
@@ -5184,6 +5203,13 @@ packages:
   react-merge-refs@1.1.0:
     resolution: {integrity: sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==}
 
+  react-monaco-editor@0.58.0:
+    resolution: {integrity: sha512-e8JH0TQEzO96Wd/EXgzc9M9tQK1pxBECD+8GNob9slMURcCM36TiVrgc4topWCDGYxRuMj8IEkaX+s3eQcUUqw==}
+    peerDependencies:
+      monaco-editor: ^0.52.0
+      react: '>=16.8.0 <20.0.0'
+      react-dom: '>=16.8.0 <20.0.0'
+
   react-redux@5.1.2:
     resolution: {integrity: sha512-Ns1G0XXc8hDyH/OcBHOxNgQx9ayH3SPxBnFCOidGKSle8pKihysQw2rG/PmciUQRoclhVBO8HMhiRmGXnDja9Q==}
     peerDependencies:
@@ -5230,6 +5256,13 @@ packages:
       react: '>=16.8'
       react-dom: '>=16.8'
 
+  react-router-dom@7.2.0:
+    resolution: {integrity: sha512-cU7lTxETGtQRQbafJubvZKHEn5izNABxZhBY0Jlzdv0gqQhCPQt2J8aN5ZPjS6mQOXn5NnirWNh+FpE8TTYN0Q==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
+
   react-router-redux@5.0.0-alpha.9:
     resolution: {integrity: sha512-euSgNIANnRXr4GydIuwA7RZCefrLQzIw5WdXspS8NPYbV+FxrKSS9MKG7U9vb6vsKHONnA4VxrVNWfnMUnUQAw==}
     deprecated: This project is no longer maintained.
@@ -5245,6 +5278,16 @@ packages:
     resolution: {integrity: sha512-7Wh1DzVQ+tlFjkeo+ujvjSqSJmkt1+8JO+T5xklPlgrh70y7ogx75ODRW0ThWhY7S+6yEDks8TYrtQe/aoboBQ==}
     peerDependencies:
       react: '>=16.8'
+
+  react-router@7.2.0:
+    resolution: {integrity: sha512-fXyqzPgCPZbqhrk7k3hPcCpYIlQ2ugIXDboHUzhJISFVy2DEPsmHgN588MyGmkIOv3jDgNfUE3kJi83L28s/LQ==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
 
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
@@ -5507,6 +5550,9 @@ packages:
   serve-static@1.16.2:
     resolution: {integrity: sha512-VqpjJZKadQB/PEbEwvFdO43Ax5dFBZ2UECszz8bQ7pi7wt//PWe1P6MN7eCnjsatYtBT6EuiClbjSWP2WrIoTw==}
     engines: {node: '>= 0.8.0'}
+
+  set-cookie-parser@2.7.1:
+    resolution: {integrity: sha512-IOc8uWeOZgnb3ptbCURJWNjWUPcO3ZnTTdzsurqERrP6nPyv+paC55vJM0LpOlT2ne+Ix+9+CRG1MNLlyZ4GjQ==}
 
   set-function-length@1.2.2:
     resolution: {integrity: sha512-pgRc4hJ4/sNjWCSS9AmnS40x3bNMDTknHgL5UaMBTMyJnU90EgWh1Rz+MC9eFu4BuN/UwZjKQuY/1v3rM7HMfg==}
@@ -5935,6 +5981,9 @@ packages:
 
   tty-browserify@0.0.0:
     resolution: {integrity: sha512-JVa5ijo+j/sOoHGjw0sxw734b1LhBkQ3bvUGNdxnVXDCX81Yx7TFgnZygxrIIWn23hbfTaMYLwRmAxFyDuFmIw==}
+
+  turbo-stream@2.4.0:
+    resolution: {integrity: sha512-FHncC10WpBd2eOmGwpmQsWLDoK4cqsA/UT/GqNoaKOQnT8uzhtCbg3EoUDMvqpOSAI0S26mr0rkjzbOO6S3v1g==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -6866,90 +6915,90 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.9
 
-  '@babel/plugin-syntax-async-generators@7.8.4(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-async-generators@7.8.4(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-bigint@7.8.3(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-bigint@7.8.3(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-class-static-block@7.14.5(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-class-static-block@7.14.5(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-import-attributes@7.26.0(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-import-attributes@7.26.0(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-import-meta@7.10.4(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-import-meta@7.10.4(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-jsx@7.25.9(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-jsx@7.25.9(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-logical-assignment-operators@7.10.4(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-logical-assignment-operators@7.10.4(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-nullish-coalescing-operator@7.8.3(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-nullish-coalescing-operator@7.8.3(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-numeric-separator@7.10.4(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-numeric-separator@7.10.4(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-optional-catch-binding@7.8.3(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-optional-catch-binding@7.8.3(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-optional-chaining@7.8.3(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-optional-chaining@7.8.3(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-private-property-in-object@7.14.5(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-private-property-in-object@7.14.5(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-syntax-top-level-await@7.14.5(@babel/core@7.23.6)':
+  '@babel/plugin-syntax-top-level-await@7.14.5(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@babel/helper-plugin-utils': 7.26.5
 
-  '@babel/plugin-transform-modules-commonjs@7.23.3(@babel/core@7.23.6)':
+  '@babel/plugin-transform-modules-commonjs@7.23.3(@babel/core@7.26.9)':
     dependencies:
-      '@babel/core': 7.23.6
-      '@babel/helper-module-transforms': 7.26.0(@babel/core@7.23.6)
+      '@babel/core': 7.26.9
+      '@babel/helper-module-transforms': 7.26.0(@babel/core@7.26.9)
       '@babel/helper-plugin-utils': 7.26.5
       '@babel/helper-simple-access': 7.25.9
     transitivePeerDependencies:
@@ -7288,12 +7337,12 @@ snapshots:
 
   '@floating-ui/react-dom-interactions@0.3.1(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@floating-ui/react-dom': 0.6.3(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@floating-ui/react-dom': 0.6.3(@models/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       aria-hidden: 1.2.4
       point-in-polygon: 1.1.0
-      use-isomorphic-layout-effect: 1.2.0(@types/react@18.3.18)(react@18.3.1)
+      use-isomorphic-layout-effect: 1.2.0(@models/react@18.3.18)(react@18.3.1)
     transitivePeerDependencies:
-      - '@types/react'
+      - '@models/react'
       - react
       - react-dom
 
@@ -7302,9 +7351,9 @@ snapshots:
       '@floating-ui/dom': 0.4.5
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      use-isomorphic-layout-effect: 1.2.0(@types/react@18.3.18)(react@18.3.1)
+      use-isomorphic-layout-effect: 1.2.0(@models/react@18.3.18)(react@18.3.1)
     transitivePeerDependencies:
-      - '@types/react'
+      - '@models/react'
 
   '@formatjs/intl-displaynames@1.2.10':
     dependencies:
@@ -7808,6 +7857,8 @@ snapshots:
     dependencies:
       '@babel/types': 7.26.9
 
+  '@types/cookie@0.6.0': {}
+
   '@types/eslint-scope@3.7.7':
     dependencies:
       '@types/eslint': 9.6.1
@@ -8064,15 +8115,15 @@ snapshots:
       '@svgr/core': 6.5.1
       '@umijs/bundler-utils': 4.4.5
       '@umijs/utils': 4.4.5
-      '@vitejs/plugin-react': 4.0.0(vite@4.5.2(@types/node@22.13.5)(less@4.1.3)(lightningcss@1.22.1)(sass@1.85.0)(terser@5.39.0))
+      '@vitejs/plugin-react': 4.0.0(vite@4.5.2(@models/node@22.13.5)(less@4.1.3)(lightningcss@1.22.1)(sass@1.85.0)(terser@5.39.0))
       core-js: 3.34.0
       less: 4.1.3
       postcss-preset-env: 7.5.0(postcss@8.5.3)
       rollup-plugin-visualizer: 5.9.0(rollup@3.29.5)
       systemjs: 6.15.1
-      vite: 4.5.2(@types/node@22.13.5)(less@4.1.3)(lightningcss@1.22.1)(sass@1.85.0)(terser@5.39.0)
+      vite: 4.5.2(@models/node@22.13.5)(less@4.1.3)(lightningcss@1.22.1)(sass@1.85.0)(terser@5.39.0)
     transitivePeerDependencies:
-      - '@types/node'
+      - '@models/node'
       - lightningcss
       - postcss
       - rollup
@@ -8106,7 +8157,7 @@ snapshots:
       react-error-overlay: 6.0.9
       react-refresh: 0.14.0
     transitivePeerDependencies:
-      - '@types/webpack'
+      - '@models/webpack'
       - sockjs-client
       - supports-color
       - type-fest
@@ -8246,20 +8297,20 @@ snapshots:
       '@umijs/mako-win32-ia32-msvc': 0.11.4
       '@umijs/mako-win32-x64-msvc': 0.11.4
 
-  '@umijs/max@4.4.5(@babel/core@7.23.6)(@types/node@22.13.5)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(lightningcss@1.22.1)(prettier@2.8.8)(rc-field-form@2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)':
+  '@umijs/max@4.4.5(@babel/core@7.26.9)(@types/node@22.13.5)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(lightningcss@1.22.1)(prettier@2.8.8)(rc-field-form@2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)':
     dependencies:
       '@umijs/lint': 4.4.5(eslint@8.35.0)(stylelint@14.8.2)(typescript@5.7.3)
-      '@umijs/plugins': 4.4.5(@babel/core@7.23.6)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(antd@4.24.16(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(rc-field-form@2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@umijs/plugins': 4.4.5(@babel/core@7.26.9)(@models/react-dom@18.3.5(@models/react@18.3.18))(@models/react@18.3.18)(antd@4.24.16(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(rc-field-form@2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       antd: 4.24.16(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       eslint: 8.35.0
       stylelint: 14.8.2
-      umi: 4.4.5(@babel/core@7.23.6)(@types/node@22.13.5)(@types/react@18.3.18)(eslint@8.35.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(stylelint@14.8.2)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)
+      umi: 4.4.5(@babel/core@7.26.9)(@models/node@22.13.5)(@models/react@18.3.18)(eslint@8.35.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(stylelint@14.8.2)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)
     transitivePeerDependencies:
       - '@babel/core'
-      - '@types/node'
-      - '@types/react'
-      - '@types/react-dom'
-      - '@types/webpack'
+      - '@models/node'
+      - '@models/react'
+      - '@models/react-dom'
+      - '@models/webpack'
       - '@volar/vue-language-plugin-pug'
       - '@volar/vue-typescript'
       - debug
@@ -8300,16 +8351,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@umijs/plugin-model@2.6.2(umi@4.4.5(@babel/core@7.23.6)(@types/node@22.13.5)(@types/react@18.3.18)(eslint@8.35.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(stylelint@14.8.2)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0))':
+  '@umijs/plugin-model@2.6.2(umi@4.4.5(@babel/core@7.26.9)(@types/node@22.13.5)(@types/react@18.3.18)(eslint@8.35.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(stylelint@14.8.2)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0))':
     dependencies:
       fast-deep-equal: 3.1.1
-      umi: 4.4.5(@babel/core@7.23.6)(@types/node@22.13.5)(@types/react@18.3.18)(eslint@8.35.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(stylelint@14.8.2)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)
+      umi: 4.4.5(@babel/core@7.26.9)(@models/node@22.13.5)(@models/react@18.3.18)(eslint@8.35.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(stylelint@14.8.2)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)
 
   '@umijs/plugin-run@4.4.5':
     dependencies:
       tsx: 3.12.2
 
-  '@umijs/plugins@4.4.5(@babel/core@7.23.6)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(antd@4.24.16(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(rc-field-form@2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@umijs/plugins@4.4.5(@babel/core@7.26.9)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(antd@4.24.16(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(rc-field-form@2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@ahooksjs/use-request': 2.8.15(react@18.3.1)
       '@ant-design/antd-theme-variable': 1.0.0
@@ -8320,11 +8371,11 @@ snapshots:
       '@tanstack/react-query': 4.36.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tanstack/react-query-devtools': 4.36.1(@tanstack/react-query@4.36.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@umijs/bundler-utils': 4.4.5
-      '@umijs/valtio': 1.0.4(@types/react@18.3.18)(react@18.3.1)
+      '@umijs/valtio': 1.0.4(@models/react@18.3.18)(react@18.3.1)
       antd-dayjs-webpack-plugin: 1.0.6(dayjs@1.11.13)
       axios: 0.27.2
       babel-plugin-import: 1.13.8
-      babel-plugin-styled-components: 2.1.4(@babel/core@7.23.6)(styled-components@6.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      babel-plugin-styled-components: 2.1.4(@babel/core@7.26.9)(styled-components@6.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       dayjs: 1.11.13
       dva-core: 2.0.4(redux@4.2.1)
       dva-immer: 1.0.2(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
@@ -8336,15 +8387,60 @@ snapshots:
       moment: 2.30.1
       qiankun: 2.10.16
       react-intl: 3.12.1(react@18.3.1)
-      react-redux: 8.1.3(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(redux@4.2.1)
+      react-redux: 8.1.3(@models/react-dom@18.3.5(@models/react@18.3.18))(@models/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(redux@4.2.1)
       redux: 4.2.1
       styled-components: 6.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tslib: 2.8.1
       warning: 4.0.3
     transitivePeerDependencies:
       - '@babel/core'
-      - '@types/react'
-      - '@types/react-dom'
+      - '@models/react'
+      - '@models/react-dom'
+      - antd
+      - debug
+      - dva
+      - rc-field-form
+      - react
+      - react-dom
+      - react-native
+      - supports-color
+
+  '@umijs/plugins@4.4.5(@babel/core@7.26.9)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(antd@5.24.1(date-fns@2.30.0)(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(rc-field-form@2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@ahooksjs/use-request': 2.8.15(react@18.3.1)
+      '@ant-design/antd-theme-variable': 1.0.0
+      '@ant-design/cssinjs': 1.23.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@ant-design/icons': 4.8.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@ant-design/moment-webpack-plugin': 0.0.3
+      '@ant-design/pro-components': 2.8.6(antd@5.24.1(date-fns@2.30.0)(moment@2.30.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(rc-field-form@2.7.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@tanstack/react-query': 4.36.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@tanstack/react-query-devtools': 4.36.1(@tanstack/react-query@4.36.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@umijs/bundler-utils': 4.4.5
+      '@umijs/valtio': 1.0.4(@models/react@18.3.18)(react@18.3.1)
+      antd-dayjs-webpack-plugin: 1.0.6(dayjs@1.11.13)
+      axios: 0.27.2
+      babel-plugin-import: 1.13.8
+      babel-plugin-styled-components: 2.1.4(@babel/core@7.26.9)(styled-components@6.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      dayjs: 1.11.13
+      dva-core: 2.0.4(redux@4.2.1)
+      dva-immer: 1.0.2(dva@2.5.0-beta.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      dva-loading: 3.0.25(dva-core@2.0.4(redux@4.2.1))
+      event-emitter: 0.3.5
+      fast-deep-equal: 3.1.3
+      intl: 1.2.5
+      lodash: 4.17.21
+      moment: 2.30.1
+      qiankun: 2.10.16
+      react-intl: 3.12.1(react@18.3.1)
+      react-redux: 8.1.3(@models/react-dom@18.3.5(@models/react@18.3.18))(@models/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(redux@4.2.1)
+      redux: 4.2.1
+      styled-components: 6.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      tslib: 2.8.1
+      warning: 4.0.3
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@models/react'
+      - '@models/react-dom'
       - antd
       - debug
       - dva
@@ -8363,7 +8459,7 @@ snapshots:
       '@umijs/bundler-esbuild': 4.4.5
       '@umijs/bundler-mako': 0.11.4
       '@umijs/bundler-utils': 4.4.5
-      '@umijs/bundler-vite': 4.4.5(@types/node@22.13.5)(lightningcss@1.22.1)(postcss@8.5.3)(rollup@3.29.5)(sass@1.85.0)(terser@5.39.0)
+      '@umijs/bundler-vite': 4.4.5(@models/node@22.13.5)(lightningcss@1.22.1)(postcss@8.5.3)(rollup@3.29.5)(sass@1.85.0)(terser@5.39.0)
       '@umijs/bundler-webpack': 4.4.5(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)
       '@umijs/core': 4.4.5
       '@umijs/did-you-know': 1.0.3
@@ -8378,7 +8474,7 @@ snapshots:
       '@umijs/zod2ts': 4.4.5
       babel-plugin-dynamic-import-node: 2.3.3
       babel-plugin-react-compiler: 0.0.0-experimental-c23de8d-20240515
-      click-to-react-component: 1.1.0(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      click-to-react-component: 1.1.0(@models/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       core-js: 3.34.0
       current-script-polyfill: 1.0.0
       enhanced-resolve: 5.9.3
@@ -8394,9 +8490,9 @@ snapshots:
       react-router-dom: 6.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       regenerator-runtime: 0.13.11
     transitivePeerDependencies:
-      - '@types/node'
-      - '@types/react'
-      - '@types/webpack'
+      - '@models/node'
+      - '@models/react'
+      - '@models/webpack'
       - lightningcss
       - rollup
       - sass
@@ -8450,13 +8546,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@umijs/test@4.4.5(@babel/core@7.23.6)':
+  '@umijs/test@4.4.5(@babel/core@7.26.9)':
     dependencies:
-      '@babel/plugin-transform-modules-commonjs': 7.23.3(@babel/core@7.23.6)
+      '@babel/plugin-transform-modules-commonjs': 7.23.3(@babel/core@7.26.9)
       '@jest/types': 27.5.1
       '@umijs/bundler-utils': 4.4.5
       '@umijs/utils': 4.4.5
-      babel-jest: 29.7.0(@babel/core@7.23.6)
+      babel-jest: 29.7.0(@babel/core@7.26.9)
       esbuild: 0.21.4
       identity-obj-proxy: 3.0.0
       isomorphic-unfetch: 4.0.2
@@ -8477,9 +8573,9 @@ snapshots:
 
   '@umijs/valtio@1.0.4(@types/react@18.3.18)(react@18.3.1)':
     dependencies:
-      valtio: 1.11.2(@types/react@18.3.18)(react@18.3.1)
+      valtio: 1.11.2(@models/react@18.3.18)(react@18.3.1)
     transitivePeerDependencies:
-      - '@types/react'
+      - '@models/react'
       - react
 
   '@umijs/zod2ts@4.4.5': {}
@@ -8490,7 +8586,7 @@ snapshots:
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.9)
       '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.9)
       react-refresh: 0.14.2
-      vite: 4.5.2(@types/node@22.13.5)(less@4.1.3)(lightningcss@1.22.1)(sass@1.85.0)(terser@5.39.0)
+      vite: 4.5.2(@models/node@22.13.5)(less@4.1.3)(lightningcss@1.22.1)(sass@1.85.0)(terser@5.39.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -8864,13 +8960,13 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  babel-jest@29.7.0(@babel/core@7.23.6):
+  babel-jest@29.7.0(@babel/core@7.26.9):
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       '@jest/transform': 29.7.0
       '@types/babel__core': 7.20.5
       babel-plugin-istanbul: 6.1.1
-      babel-preset-jest: 29.6.3(@babel/core@7.23.6)
+      babel-preset-jest: 29.6.3(@babel/core@7.26.9)
       chalk: 4.1.2
       graceful-fs: 4.2.11
       slash: 3.0.0
@@ -8914,11 +9010,11 @@ snapshots:
       zod: 3.24.2
       zod-validation-error: 2.1.0(zod@3.24.2)
 
-  babel-plugin-styled-components@2.1.4(@babel/core@7.23.6)(styled-components@6.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
+  babel-plugin-styled-components@2.1.4(@babel/core@7.26.9)(styled-components@6.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
     dependencies:
       '@babel/helper-annotate-as-pure': 7.25.9
       '@babel/helper-module-imports': 7.25.9
-      '@babel/plugin-syntax-jsx': 7.25.9(@babel/core@7.23.6)
+      '@babel/plugin-syntax-jsx': 7.25.9(@babel/core@7.26.9)
       lodash: 4.17.21
       picomatch: 2.3.1
       styled-components: 6.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -8926,30 +9022,30 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  babel-preset-current-node-syntax@1.1.0(@babel/core@7.23.6):
+  babel-preset-current-node-syntax@1.1.0(@babel/core@7.26.9):
     dependencies:
-      '@babel/core': 7.23.6
-      '@babel/plugin-syntax-async-generators': 7.8.4(@babel/core@7.23.6)
-      '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.23.6)
-      '@babel/plugin-syntax-class-properties': 7.12.13(@babel/core@7.23.6)
-      '@babel/plugin-syntax-class-static-block': 7.14.5(@babel/core@7.23.6)
-      '@babel/plugin-syntax-import-attributes': 7.26.0(@babel/core@7.23.6)
-      '@babel/plugin-syntax-import-meta': 7.10.4(@babel/core@7.23.6)
-      '@babel/plugin-syntax-json-strings': 7.8.3(@babel/core@7.23.6)
-      '@babel/plugin-syntax-logical-assignment-operators': 7.10.4(@babel/core@7.23.6)
-      '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3(@babel/core@7.23.6)
-      '@babel/plugin-syntax-numeric-separator': 7.10.4(@babel/core@7.23.6)
-      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.23.6)
-      '@babel/plugin-syntax-optional-catch-binding': 7.8.3(@babel/core@7.23.6)
-      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.23.6)
-      '@babel/plugin-syntax-private-property-in-object': 7.14.5(@babel/core@7.23.6)
-      '@babel/plugin-syntax-top-level-await': 7.14.5(@babel/core@7.23.6)
+      '@babel/core': 7.26.9
+      '@babel/plugin-syntax-async-generators': 7.8.4(@babel/core@7.26.9)
+      '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.26.9)
+      '@babel/plugin-syntax-class-properties': 7.12.13(@babel/core@7.26.9)
+      '@babel/plugin-syntax-class-static-block': 7.14.5(@babel/core@7.26.9)
+      '@babel/plugin-syntax-import-attributes': 7.26.0(@babel/core@7.26.9)
+      '@babel/plugin-syntax-import-meta': 7.10.4(@babel/core@7.26.9)
+      '@babel/plugin-syntax-json-strings': 7.8.3(@babel/core@7.26.9)
+      '@babel/plugin-syntax-logical-assignment-operators': 7.10.4(@babel/core@7.26.9)
+      '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3(@babel/core@7.26.9)
+      '@babel/plugin-syntax-numeric-separator': 7.10.4(@babel/core@7.26.9)
+      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.26.9)
+      '@babel/plugin-syntax-optional-catch-binding': 7.8.3(@babel/core@7.26.9)
+      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.26.9)
+      '@babel/plugin-syntax-private-property-in-object': 7.14.5(@babel/core@7.26.9)
+      '@babel/plugin-syntax-top-level-await': 7.14.5(@babel/core@7.26.9)
 
-  babel-preset-jest@29.6.3(@babel/core@7.23.6):
+  babel-preset-jest@29.6.3(@babel/core@7.26.9):
     dependencies:
-      '@babel/core': 7.23.6
+      '@babel/core': 7.26.9
       babel-plugin-jest-hoist: 29.6.3
-      babel-preset-current-node-syntax: 1.1.0(@babel/core@7.23.6)
+      babel-preset-current-node-syntax: 1.1.0(@babel/core@7.26.9)
 
   balanced-match@1.0.2: {}
 
@@ -9184,12 +9280,12 @@ snapshots:
 
   click-to-react-component@1.1.0(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@floating-ui/react-dom-interactions': 0.3.1(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@floating-ui/react-dom-interactions': 0.3.1(@models/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       htm: 3.1.1
       react: 18.3.1
       react-merge-refs: 1.1.0
     transitivePeerDependencies:
-      - '@types/react'
+      - '@models/react'
       - react-dom
 
   cliui@8.0.1:
@@ -9271,6 +9367,8 @@ snapshots:
   cookie-signature@1.0.6: {}
 
   cookie@0.7.1: {}
+
+  cookie@1.0.2: {}
 
   copy-anything@2.0.6:
     dependencies:
@@ -12649,6 +12747,12 @@ snapshots:
 
   react-merge-refs@1.1.0: {}
 
+  react-monaco-editor@0.58.0(monaco-editor@0.52.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      monaco-editor: 0.52.2
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   react-redux@5.1.2(react@18.3.1)(redux@3.7.2):
     dependencies:
       '@babel/runtime': 7.26.9
@@ -12672,7 +12776,7 @@ snapshots:
       use-sync-external-store: 1.4.0(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.3.18
-      '@types/react-dom': 18.3.5(@types/react@18.3.18)
+      '@types/react-dom': 18.3.5(@models/react@18.3.18)
       react-dom: 18.3.1(react@18.3.1)
       redux: 4.2.1
 
@@ -12697,6 +12801,12 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       react-router: 6.3.0(react@18.3.1)
 
+  react-router-dom@7.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-router: 7.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+
   react-router-redux@5.0.0-alpha.9(react@18.3.1):
     dependencies:
       history: 4.10.1
@@ -12719,6 +12829,16 @@ snapshots:
     dependencies:
       history: 5.3.0
       react: 18.3.1
+
+  react-router@7.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      '@types/cookie': 0.6.0
+      cookie: 1.0.2
+      react: 18.3.1
+      set-cookie-parser: 2.7.1
+      turbo-stream: 2.4.0
+    optionalDependencies:
+      react-dom: 18.3.1(react@18.3.1)
 
   react@18.3.1:
     dependencies:
@@ -13005,6 +13125,8 @@ snapshots:
       send: 0.19.0
     transitivePeerDependencies:
       - supports-color
+
+  set-cookie-parser@2.7.1: {}
 
   set-function-length@1.2.2:
     dependencies:
@@ -13511,6 +13633,8 @@ snapshots:
 
   tty-browserify@0.0.0: {}
 
+  turbo-stream@2.4.0: {}
+
   type-check@0.4.0:
     dependencies:
       prelude-ls: 1.2.1
@@ -13567,25 +13691,25 @@ snapshots:
 
   typescript@5.7.3: {}
 
-  umi@4.4.5(@babel/core@7.23.6)(@types/node@22.13.5)(@types/react@18.3.18)(eslint@8.35.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(stylelint@14.8.2)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0):
+  umi@4.4.5(@babel/core@7.26.9)(@types/node@22.13.5)(@types/react@18.3.18)(eslint@8.35.0)(lightningcss@1.22.1)(prettier@2.8.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@3.29.5)(sass@1.85.0)(stylelint@14.8.2)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0):
     dependencies:
       '@babel/runtime': 7.23.6
       '@umijs/bundler-utils': 4.4.5
       '@umijs/bundler-webpack': 4.4.5(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)
       '@umijs/core': 4.4.5
       '@umijs/lint': 4.4.5(eslint@8.35.0)(stylelint@14.8.2)(typescript@5.7.3)
-      '@umijs/preset-umi': 4.4.5(@types/node@22.13.5)(@types/react@18.3.18)(lightningcss@1.22.1)(rollup@3.29.5)(sass@1.85.0)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)
+      '@umijs/preset-umi': 4.4.5(@models/node@22.13.5)(@models/react@18.3.18)(lightningcss@1.22.1)(rollup@3.29.5)(sass@1.85.0)(terser@5.39.0)(type-fest@1.4.0)(typescript@5.7.3)(webpack@5.98.0)
       '@umijs/renderer-react': 4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@umijs/server': 4.4.5
-      '@umijs/test': 4.4.5(@babel/core@7.23.6)
+      '@umijs/test': 4.4.5(@babel/core@7.26.9)
       '@umijs/utils': 4.4.5
       prettier-plugin-organize-imports: 3.2.4(prettier@2.8.8)(typescript@5.7.3)
       prettier-plugin-packagejson: 2.4.3(prettier@2.8.8)
     transitivePeerDependencies:
       - '@babel/core'
-      - '@types/node'
-      - '@types/react'
-      - '@types/webpack'
+      - '@models/node'
+      - '@models/react'
+      - '@models/webpack'
       - '@volar/vue-language-plugin-pug'
       - '@volar/vue-typescript'
       - eslint

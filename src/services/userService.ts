@@ -1,11 +1,11 @@
-import { request } from '@umijs/max';
+import {request} from '@/app';
 
 /**
  * 用户注册
  * @param params
  * */
 export async function userRegister(params: UserType.UserRegisterRequest) {
-  return request<BaseResponse<number>>('user/register', {
+  return request<BaseResponse<number>>('/user/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export async function addUser(params: UserType.UserAddRequest) {
  * @param params
  * */
 export async function deleteUser(params: UserType.UserDeleteRequest) {
-  return request<BaseResponse<boolean>>('user/delete', {
+  return request<BaseResponse<boolean>>('/user/delete', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ export async function deleteUser(params: UserType.UserDeleteRequest) {
  * @param params
  * */
 export async function updateUser(params: UserType.UserUpdateRequest) {
-  return request<BaseResponse<boolean>>('user/update', {
+  return request<BaseResponse<boolean>>('/user/update', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export async function updateUser(params: UserType.UserUpdateRequest) {
  * @param id
  * */
 export async function getUserById(id: number) {
-  return request<BaseResponse<UserType.UserVO>>('user/get', {
+  return request<BaseResponse<UserType.UserVO>>('/user/get', {
     method: 'GET',
     params: { id },
   });

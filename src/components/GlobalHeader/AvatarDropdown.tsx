@@ -1,4 +1,4 @@
-import { userLogout } from '@/services/user';
+import { userLogout } from '@/services/userService';
 import { Link } from '@@/exports';
 import { LogoutOutlined } from '@ant-design/icons';
 import { history, useModel } from '@umijs/max';

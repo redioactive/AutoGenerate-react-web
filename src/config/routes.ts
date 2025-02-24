@@ -1,5 +1,10 @@
 export default [
   {
+    name:'代码生成',
+    path:'/',
+    component:"@/pages/index/index"
+  },
+  {
     path: '/user',
     hideInMenu: true,
     headerRender: false,

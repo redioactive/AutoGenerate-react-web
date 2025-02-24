@@ -1,5 +1,5 @@
 import Logo from '@/assets/logo.png';
-import { userLogin } from '@/services/user';
+import { userLogin } from '@/services/userService';
 import { Link } from '@@/exports';
 import { useModel } from '@@/plugin-model';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';

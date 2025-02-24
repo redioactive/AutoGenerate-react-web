@@ -16,7 +16,7 @@ export default defineConfig({
   chainWebpack: (memo: any) => {
     memo.plugin('monaco-editor-webpack-plugin').use(MonacoEditorWebpackPlugin, [
       //按需配置
-      { languages: ['sql', 'json', 'java', 'typescript'] },
+      { languages: ['sql', 'json', 'nest', 'typescript'] },
     ]);
     return memo;
   },

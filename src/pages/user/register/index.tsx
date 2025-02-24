@@ -1,5 +1,5 @@
 import Logo from '@/assets/logo.png';
-import { userRegister } from '@/services/user';
+import { userRegister } from '@/services/userService';
 import { Link } from '@@/exports';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginForm, ProFormText } from '@ant-design/pro-form';
