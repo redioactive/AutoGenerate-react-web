@@ -1,20 +1,20 @@
 import Logo from '@/assets/logo.png';
-import {userLogin} from '@/api/user';
-import {Link} from '@@/exports'
-import {LockOutlined,UserOutlined} from '@ant-design/icons';
-import {LoginForm,ProFormText} from '@ant-design/pro-form';
-import {useModel} from '@@/plugin-model';
-import {message} from 'antd';
-import {useLocation} from '@umijs/max';
+import { userLogin } from '@/services/user';
+import { Link } from '@@/exports';
+import { useModel } from '@@/plugin-model';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { LoginForm, ProFormText } from '@ant-design/pro-form';
+import { useLocation } from '@umijs/max';
+import { message } from 'antd';
 
 /**
  * 用户登录界面
  * */
 export default () => {
-  // @ts-ignore
-  const [searchParams] = useLocation();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
 
-  const {initialState,setInitialState} = useModel('@@initialState');
+  const { initialState, setInitialState } = useModel('@@initialState');
 
   /**
    * 用户登录
@@ -56,43 +56,44 @@ export default () => {
           await doUserLogin(formData);
         }}
       >
-      <ProFormText
-      name="userAccount"
-      fieldProps={{
-        size:'large',
-        prefix:<UserOutlined className={'prefixIcon'}/>
-      }}
-      placeholder={'请输入账号'}
-      rules={[
-        {
-          required:true,
-          message:'请输入账号!'
-        }
-      ]}
-      />
-      <ProFormText.Password
-      name='userPassword'
-      fieldProps={{
-        size:'large',
-        prefix:<LockOutlined className={'prefixIcon'}/>
-      }}
-      placeholder={'请输入密码'}
-      rules={[
-        {
-          required:true,
-          message:'请输入密码!'
-        }
-      ]}
-      />
+        <ProFormText
+          name="userAccount"
+          fieldProps={{
+            size: 'large',
+            prefix: <UserOutlined className={'prefixIcon'} />,
+          }}
+          placeholder={'请输入账号'}
+          rules={[
+            {
+              required: true,
+              message: '请输入账号!',
+            },
+          ]}
+        />
+        <ProFormText.Password
+          name="userPassword"
+          fieldProps={{
+            size: 'large',
+            prefix: <LockOutlined className={'prefixIcon'} />,
+          }}
+          placeholder={'请输入密码'}
+          rules={[
+            {
+              required: true,
+              message: '请输入密码!',
+            },
+          ]}
+        />
         <Link to="/user/register">新用户注册</Link>
         <Link
           to="/"
           style={{
-            float:'right'
-          }}>返回主页
+            float: 'right',
+          }}
+        >
+          返回主页
         </Link>
       </LoginForm>
     </div>
   );
-}
-
+};

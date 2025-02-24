@@ -1,10 +1,10 @@
-import { userLogout } from '@/api/user';
+import { userLogout } from '@/services/user';
 import { Link } from '@@/exports';
 import { LogoutOutlined } from '@ant-design/icons';
 import { history, useModel } from '@umijs/max';
 import { Avatar, Button, Dropdown, Menu, message } from 'antd';
 import classNames from 'classnames';
-import queryString from 'query-string'
+import queryString from 'query-string';
 import React from 'react';
 import styles from './index.less';
 
