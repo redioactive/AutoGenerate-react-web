@@ -113,3 +113,14 @@ export async function getLoginUser() {
     method: 'GET',
   });
 }
+
+/**
+ * 分页获取用户列表
+ * @param params
+ */
+export async function listUserByPage(params: UserType.UserQueryRequest) {
+  return request<BaseResponse<PageInfo<UserType.UserVO[]>>>('/user/list', {
+    method: 'GET',
+    params,
+  });
+}

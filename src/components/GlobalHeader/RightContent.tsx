@@ -1,6 +1,7 @@
 import type {Settings as ProSettings} from '@ant-design/pro-layout';
 import React from 'react';
 import  {AvatarDropdown}  from './AvatarDropdown';
+// @ts-ignore
 import styles from './index.less'
 
 type GlobalHeaderRightProps  = Partial<ProSettings>;

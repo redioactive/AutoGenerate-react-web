@@ -5,7 +5,7 @@ export default (initialState: InitialState) => {
   // 参考文档 https://umijs.org/docs/max/access
   const canUser = !!initialState.loginUser;
   const canAdmin =
-    initialState.loginUser && initialState.loginUser.userRole === 'admin';
+    initialState.loginUser && initialState.loginUser.userRole === 'fieldInfo';
   return {
     canUser,
     canAdmin

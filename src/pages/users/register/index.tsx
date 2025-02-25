@@ -1,11 +1,11 @@
+// @ts-ignore
 import Logo from '@/assets/logo.png';
 import { userRegister } from '@/services/userService';
 import { Link } from '@@/exports';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { LoginForm, ProFormText } from '@ant-design/pro-form';
-import { useNavigate } from '@umijs/max';
+import { LoginForm, ProFormText } from '@ant-design/pro-components';
 import { message } from 'antd';
-
+import {useNavigate} from 'react-router-dom';
 /**
  * 用户注册页面
  */
@@ -43,7 +43,7 @@ export default () => {
     >
       <LoginForm<UserType.UserRegisterRequest>
         logo={Logo}
-        title="it技术馆"
+        title="SQL之父"
         subTitle="快速生成代码和数据"
         submitter={{
           searchConfig: {
@@ -56,18 +56,18 @@ export default () => {
       >
         <>
           <ProFormText
-            name="userName"
-            fieldProps={{
-              size: 'large',
-              prefix: <UserOutlined className={'prefixIcon'} />,
-            }}
-            placeholder={'请输入用户名'}
-            rules={[
-              {
-                required: true,
-                message: '请输入用户名!',
-              },
-            ]}
+              name="userName"
+              fieldProps={{
+                size: 'large',
+                prefix: <UserOutlined className={'prefixIcon'} />,
+              }}
+              placeholder={'请输入用户名'}
+              rules={[
+                {
+                  required: true,
+                  message: '请输入用户名!',
+                },
+              ]}
           />
           <ProFormText
             name="userAccount"

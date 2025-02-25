@@ -1,7 +1,7 @@
 import {TableInfoList} from '@/components/TableInfoList';
 import {listTableInfoByPage} from '@/services/tableInfoService';
 import {useModel} from '@umijs/plugins/libs/model';
-import {Button,Card,Empty,Input,message,Space} from 'antd';
+import { Button, Card, Empty, Input, message, Space, Spin } from 'antd';
 import React,{useEffect,useState} from 'react';
 import './index.less';
 import { DEFAULT_PAGE_SIZE } from 'antd/es/table/hooks/usePagination';
@@ -41,8 +41,14 @@ export const TableInfoCard :React.FC<Props> = (props) => {
   useState<TableInfoType.TableInfoQueryRequest>(initSearchParams);
 
   const {initialState} = useModel('@@initialState');
+  if(loading || !initialState) {
+    return <Spin/>
+  }
   const loginUser = initialState?.loginUser;
 
+  if(!initialState){
+    return <Spin/>
+  }
   /**
    * 加载数据
    * */
@@ -61,16 +67,19 @@ export const TableInfoCard :React.FC<Props> = (props) => {
       })
   }
   //加载数据
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    //需要登录
-    if(needLogin && !loginUser) return;
+    if (needLogin && !loginUser) return; // 在 Hook 内部进行检查
     setLoading(true);
-    if(onLoad) {
-      onLoad(searchParams,setDataList,setTotal);
-    }else innerOnLoad();
-    setLoading(false);
-  },[searchParams])
 
+    if (onLoad) {
+      onLoad(searchParams, setDataList, setTotal);
+    } else {
+      innerOnLoad();
+    }
+
+    setLoading(false);
+  }, [searchParams, needLogin, loginUser]);
   return (
     <div className="table-info-card">
       <Card title={title} extra={

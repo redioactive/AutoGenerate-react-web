@@ -1,31 +1,30 @@
+// @ts-ignore
 import Logo from '@/assets/logo.png';
 import { userLogin } from '@/services/userService';
 import { Link } from '@@/exports';
-import { useModel } from '@@/plugin-model';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { LoginForm, ProFormText } from '@ant-design/pro-form';
-import { useLocation } from '@umijs/max';
+import { LoginForm, ProFormText } from '@ant-design/pro-components';
+import { useModel } from '@umijs/max';
 import { message } from 'antd';
+import {useLocation} from '@umijs/max';
 
 /**
- * 用户登录界面
- * */
+ * 用户登录页面
+ */
 export default () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-
   const { initialState, setInitialState } = useModel('@@initialState');
 
   /**
    * 用户登录
    * @param fields
-   * */
+   */
   const doUserLogin = async (fields: UserType.UserLoginRequest) => {
     const hide = message.loading('登录中');
     try {
       const res = await userLogin({ ...fields });
       message.success('登录成功');
-      // @ts-ignore
       setInitialState({
         ...initialState,
         loginUser: res.data,
@@ -38,61 +37,70 @@ export default () => {
       hide();
     }
   };
+
   return (
     <div
       style={{
         height: '100vh',
         background:
           'url(https://gw.alipayobjects.com/zos/rmsportal/FfdJeJRQWjEeGTpqgBKj.png)',
-        backgroundSize: 'cover',
+        backgroundSize: '100% 100%',
         padding: '32px 0 24px',
       }}
     >
       <LoginForm<UserType.UserLoginRequest>
         logo={Logo}
-        title="代码生成器"
+        title="SQL之父"
         subTitle="快速生成代码和数据"
-        onFinish={async (formData: UserType.UserLoginRequest) => {
+        onFinish={async (formData) => {
           await doUserLogin(formData);
         }}
       >
-        <ProFormText
-          name="userAccount"
-          fieldProps={{
-            size: 'large',
-            prefix: <UserOutlined className={'prefixIcon'} />,
-          }}
-          placeholder={'请输入账号'}
-          rules={[
-            {
-              required: true,
-              message: '请输入账号!',
-            },
-          ]}
-        />
-        <ProFormText.Password
-          name="userPassword"
-          fieldProps={{
-            size: 'large',
-            prefix: <LockOutlined className={'prefixIcon'} />,
-          }}
-          placeholder={'请输入密码'}
-          rules={[
-            {
-              required: true,
-              message: '请输入密码!',
-            },
-          ]}
-        />
-        <Link to="/user/register">新用户注册</Link>
-        <Link
-          to="/"
+        <>
+          <ProFormText
+            name="userAccount"
+            fieldProps={{
+              size: 'large',
+              prefix: <UserOutlined className={'prefixIcon'} />,
+            }}
+            placeholder={'请输入账号'}
+            rules={[
+              {
+                required: true,
+                message: '请输入账号!',
+              },
+            ]}
+          />
+          <ProFormText.Password
+            name="userPassword"
+            fieldProps={{
+              size: 'large',
+              prefix: <LockOutlined className={'prefixIcon'} />,
+            }}
+            placeholder={'请输入密码'}
+            rules={[
+              {
+                required: true,
+                message: '请输入密码！',
+              },
+            ]}
+          />
+        </>
+        <div
           style={{
-            float: 'right',
+            marginBottom: 24,
           }}
         >
-          返回主页
-        </Link>
+          <Link to="/user/register">新用户注册</Link>
+          <Link
+            to="/"
+            style={{
+              float: 'right',
+            }}
+          >
+            返回主页
+          </Link>
+        </div>
       </LoginForm>
     </div>
   );

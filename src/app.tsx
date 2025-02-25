@@ -1,10 +1,12 @@
 // 运行时配置
+// @ts-ignore
 import Logo from '@/assets/logo.png';
 import { GlobalFooter } from '@/components/GlobalFooter';
 import { GlobalHeaderRight } from '@/components/GlobalHeader/RightContent';
 import { getLoginUser } from '@/services/userService';
 import { RequestConfig } from '@@/plugin-request/request';
 import './global.less';
+
 
 interface RequestConfigs extends RequestConfig {
   baseUrl: string;
@@ -20,7 +22,9 @@ export async function getInitialState(): Promise<InitialState> {
   try {
     const res = await getLoginUser();
     defaultState.loginUser = res.data;
-  } catch (error) {}
+  } catch (error) {
+    console.error('获取用户失败',error);
+  }
   return defaultState;
 }
 

@@ -1,7 +1,7 @@
 import {BugOutlined,GithubOutlined,SketchOutlined,UserOutlined} from '@ant-design/icons';
 import {DefaultFooter} from '@ant-design/pro-layout';
 import React from 'react';
-import "./index.scss"
+import "./index.less"
 
 export const GlobalFooter:React.FC = () => {
   const currentYear = new Date().getFullYear();

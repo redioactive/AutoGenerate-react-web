@@ -17,7 +17,7 @@ interface Props {
  * @author https://github.com/redioactive?tab=repositories
  * */
 
-export const AutoInputModel:React.FC<Props> = (props) => {
+export const AutoInputModal:React.FC<Props> = (props) => {
   const {visible,onSubmit,onClose} = props;
   const [form] = Form.useForm();
 

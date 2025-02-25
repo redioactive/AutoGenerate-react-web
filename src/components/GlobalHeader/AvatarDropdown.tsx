@@ -6,6 +6,7 @@ import { Avatar, Button, Dropdown, Menu, message } from 'antd';
 import classNames from 'classnames';
 import queryString from 'query-string';
 import React from 'react';
+// @ts-ignore
 import styles from './index.less';
 
 /**
