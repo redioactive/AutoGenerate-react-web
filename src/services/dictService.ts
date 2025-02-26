@@ -21,6 +21,10 @@ export async function listDict(params: DictType.DictQueryRequest) {
 export async function listMyDict(params: DictType.DictQueryRequest) {
   return request<BaseResponse<DictType.Dict[]>>('/dict/my/list', {
     method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      'Content-Type': 'application/json',
+    },
     params,
   });
 }
