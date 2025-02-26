@@ -1,11 +1,11 @@
-import {request} from '@/app';
+import { request } from '@umijs/max';
 
 /**
  * 用户注册
  * @param params
  * */
 export async function userRegister(params: UserType.UserRegisterRequest) {
-  return request<BaseResponse<number>>('/user/register', {
+  return request<BaseResponse<number>>('/users/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export async function userRegister(params: UserType.UserRegisterRequest) {
  * @param params
  * */
 export async function userLogin(params: UserType.UserLoginRequest) {
-  return request<BaseResponse<UserType.UserVO>>('/user/login', {
+  return request<BaseResponse<UserType.UserVO>>('/users/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export async function userLogin(params: UserType.UserLoginRequest) {
  * 用户注销
  * */
 export async function userLogout() {
-  return request<BaseResponse<boolean>>('/user/logout', {
+  return request<BaseResponse<boolean>>('/users/logout', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export async function userLogout() {
  * 用户匿名登录
  * */
 export async function userLoginAnonymous() {
-  return request<BaseResponse<UserType.UserVO>>('/user/login/Anonymous', {
+  return request<BaseResponse<UserType.UserVO>>('/users/login/Anonymous', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export async function userLoginAnonymous() {
  * @param params
  * */
 export async function addUser(params: UserType.UserAddRequest) {
-  return request<BaseResponse<number>>('/user/add', {
+  return request<BaseResponse<number>>('/users/add', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export async function addUser(params: UserType.UserAddRequest) {
  * @param params
  * */
 export async function deleteUser(params: UserType.UserDeleteRequest) {
-  return request<BaseResponse<boolean>>('/user/delete', {
+  return request<BaseResponse<boolean>>('/users/delete', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ export async function deleteUser(params: UserType.UserDeleteRequest) {
  * @param params
  * */
 export async function updateUser(params: UserType.UserUpdateRequest) {
-  return request<BaseResponse<boolean>>('/user/update', {
+  return request<BaseResponse<boolean>>('/users/update', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export async function updateUser(params: UserType.UserUpdateRequest) {
  * @param id
  * */
 export async function getUserById(id: number) {
-  return request<BaseResponse<UserType.UserVO>>('/user/get', {
+  return request<BaseResponse<UserType.UserVO>>('/users/get', {
     method: 'GET',
     params: { id },
   });
@@ -109,8 +109,15 @@ export async function getUserById(id: number) {
  * 获取当前登录用户
  * */
 export async function getLoginUser() {
-  return request<BaseResponse<UserType.UserVO>>('/user/get/login', {
+  const accessToken = localStorage.getItem('accessToken');
+  if (!accessToken) {
+    throw new Error('没找到token');
+  }
+  return request<BaseResponse<UserType.UserVO>>('/users/get/login', {
     method: 'GET',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
   });
 }
 
@@ -119,7 +126,7 @@ export async function getLoginUser() {
  * @param params
  */
 export async function listUserByPage(params: UserType.UserQueryRequest) {
-  return request<BaseResponse<PageInfo<UserType.UserVO[]>>>('/user/list', {
+  return request<BaseResponse<PageInfo<UserType.UserVO[]>>>('/users/list', {
     method: 'GET',
     params,
   });

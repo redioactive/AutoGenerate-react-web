@@ -1,7 +1,7 @@
 /**
  * 举报服务
  */
-import {request} from '@/app'
+import { request } from '@umijs/max';
 
 /**
  * 分页获取列表

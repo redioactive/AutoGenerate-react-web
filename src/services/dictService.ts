@@ -1,7 +1,7 @@
 /**
  * 词条服务
  */
-import {request} from '@/app'
+import { request } from '@umijs/max';
 
 /**
  * 获取列表
@@ -30,10 +30,13 @@ export async function listMyDict(params: DictType.DictQueryRequest) {
  * @param params
  */
 export async function listMyAddDictByPage(params: DictType.DictQueryRequest) {
-  return request<BaseResponse<PageInfo<DictType.Dict>>>('/dict/my/add/list/page', {
-    method: 'GET',
-    params,
-  });
+  return request<BaseResponse<PageInfo<DictType.Dict>>>(
+    '/dict/my/add/list/page',
+    {
+      method: 'GET',
+      params,
+    },
+  );
 }
 
 /**
@@ -46,7 +49,6 @@ export async function listMyDictByPage(params: DictType.DictQueryRequest) {
     params,
   });
 }
-
 
 /**
  * 分页获取列表
@@ -125,4 +127,3 @@ export async function generateCreateDictTableSql(id: number) {
     data: id,
   });
 }
-

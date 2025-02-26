@@ -29,6 +29,7 @@ interface DeleteRequest {
  * 返回封装
  */
 interface BaseResponse<T> {
+  accessToken: string;
   code: number;
   data: T;
   message?: string;

@@ -7,14 +7,15 @@ import { getLoginUser } from '@/services/userService';
 import { RequestConfig } from '@@/plugin-request/request';
 import './global.less';
 
-
 interface RequestConfigs extends RequestConfig {
   baseUrl: string;
-  <T>(url:string,config:RequestConfig):Promise<T>
+  <T>(url: string, config: RequestConfig): Promise<T>;
 }
+
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
 // 更多信息见文档：https://umijs.org/docs/api/runtime-config#getinitialstate
 export async function getInitialState(): Promise<InitialState> {
+  const loginUser = localStorage.getItem('loginUser');
   const defaultState: InitialState = {
     loginUser: undefined,
   };
@@ -23,9 +24,12 @@ export async function getInitialState(): Promise<InitialState> {
     const res = await getLoginUser();
     defaultState.loginUser = res.data;
   } catch (error) {
-    console.error('获取用户失败',error);
+    console.error('获取用户失败', error);
   }
-  return defaultState;
+  // return defaultState;
+  return {
+    loginUser: loginUser ? JSON.parse(loginUser) : undefined,
+  };
 }
 
 //全局布局配置
@@ -54,14 +58,26 @@ const isDev = process.env.NODE_ENV === 'development';
 //  * */
 
 export const request: RequestConfigs = {
-  baseURL: isDev ? 'http://localhost:3000/' : '你的线上接口地址',
+  baseURL: isDev ? 'http://localhost:3000/api' : '你的线上接口地址',
   timeout: 10000,
   withCredentials: true,
   errorConfig: {
     errorHandler() {},
     errorThrower() {},
   },
-  requestInterceptors: [],
+  //请求拦截器
+  requestInterceptors: [
+    (url, options) => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        options.headers = {
+          ...options.headers,
+          Authorization: `Bearer ${token}`,
+        };
+      }
+      return { url, options };
+    },
+  ],
   responseInterceptors: [
     // @ts-ignore
     (response: { data: any; request: { responseURL: any } }) => {

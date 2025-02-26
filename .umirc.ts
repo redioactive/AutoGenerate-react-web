@@ -13,6 +13,14 @@ export default defineConfig({
   mock: false,
   routes,
   npmClient: 'pnpm',
+  proxy: {
+    '/api': {
+      target: 'http://127.0.0.1:3000',
+      changeOrigin: true,
+      pathRewrite: { '^/api': '' },
+    },
+  },
+
   chainWebpack: (memo: any) => {
     memo.plugin('monaco-editor-webpack-plugin').use(MonacoEditorWebpackPlugin, [
       //按需配置

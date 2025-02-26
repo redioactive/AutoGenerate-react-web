@@ -23,11 +23,11 @@ declare namespace UserType {
    * 用户类型
    */
   interface UserVO {
+    accessToken?: string;
     id: number;
     userName?: string;
     userAccount?: string;
-    userAvatar?: string;
-    gender?: UserGenderEnum;
+    gender?: number;
     userRole?: string;
     createTime?: Date;
     updateTime?: Date;

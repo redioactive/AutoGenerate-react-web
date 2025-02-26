@@ -1,13 +1,15 @@
 /**
  * 表信息服务
  */
-import {request} from '@/app'
+import { request } from '@umijs/max';
 
 /**
  * 获取列表
  * @param params
  */
-export async function listTableInfo(params: TableInfoType.TableInfoQueryRequest) {
+export async function listTableInfo(
+  params: TableInfoType.TableInfoQueryRequest,
+) {
   return request<BaseResponse<TableInfoType.TableInfo[]>>('/table_info/list', {
     method: 'GET',
     params,
@@ -18,44 +20,64 @@ export async function listTableInfo(params: TableInfoType.TableInfoQueryRequest)
  * 获取当前用户可选的全部资源列表
  * @param params
  */
-export async function listMyTableInfo(params: TableInfoType.TableInfoQueryRequest) {
-  return request<BaseResponse<TableInfoType.TableInfo[]>>('/table_info/my/list', {
-    method: 'GET',
-    params,
-  });
+export async function listMyTableInfo(
+  params: TableInfoType.TableInfoQueryRequest,
+) {
+  return request<BaseResponse<TableInfoType.TableInfo[]>>(
+    '/table_info/my/list',
+    {
+      method: 'GET',
+      params,
+    },
+  );
 }
 
 /**
  * 分页获取当前用户创建的资源列表
  * @param params
  */
-export async function listMyAddTableInfoByPage(params: TableInfoType.TableInfoQueryRequest) {
-  return request<BaseResponse<PageInfo<TableInfoType.TableInfo>>>('/table_info/my/add/list/page', {
-    method: 'GET',
-    params,
-  });
+export async function listMyAddTableInfoByPage(
+  params: TableInfoType.TableInfoQueryRequest,
+) {
+  return request<BaseResponse<PageInfo<TableInfoType.TableInfo>>>(
+    '/table_info/my/add/list/page',
+    {
+      method: 'GET',
+      params,
+    },
+  );
 }
 
 /**
  * 分页获取当前用户的资源列表
  * @param params
  */
-export async function listMyTableInfoByPage(params: TableInfoType.TableInfoQueryRequest) {
-  return request<BaseResponse<PageInfo<TableInfoType.TableInfo>>>('/table_info/my/list/page', {
-    method: 'GET',
-    params,
-  });
+export async function listMyTableInfoByPage(
+  params: TableInfoType.TableInfoQueryRequest,
+) {
+  return request<BaseResponse<PageInfo<TableInfoType.TableInfo>>>(
+    '/table_info/my/list/page',
+    {
+      method: 'GET',
+      params,
+    },
+  );
 }
 
 /**
  * 分页获取列表
  * @param params
  */
-export async function listTableInfoByPage(params: TableInfoType.TableInfoQueryRequest) {
-  return request<BaseResponse<PageInfo<TableInfoType.TableInfo>>>('/table_info/list/page', {
-    method: 'GET',
-    params,
-  });
+export async function listTableInfoByPage(
+  params: TableInfoType.TableInfoQueryRequest,
+) {
+  return request<BaseResponse<PageInfo<TableInfoType.TableInfo>>>(
+    '/table_info/list/page',
+    {
+      method: 'GET',
+      params,
+    },
+  );
 }
 
 /**
@@ -87,7 +109,9 @@ export async function getTableInfoById(id: number) {
  * 更新
  * @param params
  */
-export async function updateTableInfo(params: TableInfoType.TableInfoUpdateRequest) {
+export async function updateTableInfo(
+  params: TableInfoType.TableInfoUpdateRequest,
+) {
   return request<BaseResponse<boolean>>(`/table_info/update`, {
     method: 'POST',
     headers: {

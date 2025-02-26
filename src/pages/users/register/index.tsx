@@ -5,7 +5,8 @@ import { Link } from '@@/exports';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginForm, ProFormText } from '@ant-design/pro-components';
 import { message } from 'antd';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 /**
  * 用户注册页面
  */
@@ -26,8 +27,11 @@ export default () => {
         replace: true,
       });
     } catch (e: any) {
-      hide();
-      message.error('注册失败，' + e.message);
+      // hide();
+      // message.error('注册失败，' + e.message);
+      const errorMessage = e.reponse?.data?.message || e.message;
+      message.error(`注册失败:${errorMessage}`);
+      console.error('注册错误详情', e);
     }
   };
 
@@ -56,18 +60,18 @@ export default () => {
       >
         <>
           <ProFormText
-              name="userName"
-              fieldProps={{
-                size: 'large',
-                prefix: <UserOutlined className={'prefixIcon'} />,
-              }}
-              placeholder={'请输入用户名'}
-              rules={[
-                {
-                  required: true,
-                  message: '请输入用户名!',
-                },
-              ]}
+            name="userName"
+            fieldProps={{
+              size: 'large',
+              prefix: <UserOutlined className={'prefixIcon'} />,
+            }}
+            placeholder={'请输入用户名'}
+            rules={[
+              {
+                required: true,
+                message: '请输入用户名!',
+              },
+            ]}
           />
           <ProFormText
             name="userAccount"
@@ -81,10 +85,15 @@ export default () => {
                 required: true,
                 message: '请输入账号!',
               },
+              {
+                min: 4,
+                message: '账号至少需要4位',
+              },
             ]}
           />
           <ProFormText.Password
             name="userPassword"
+            dependencies={['userPassword']}
             fieldProps={{
               size: 'large',
               prefix: <LockOutlined className={'prefixIcon'} />,
@@ -99,6 +108,7 @@ export default () => {
           />
           <ProFormText.Password
             name="checkPassword"
+            dependencies={['userPassword']}
             fieldProps={{
               size: 'large',
               prefix: <LockOutlined className={'prefixIcon'} />,
@@ -109,6 +119,14 @@ export default () => {
                 required: true,
                 message: '请输入确认密码！',
               },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('userPassword') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('两次输入的密码不一致！'));
+                },
+              }),
             ]}
           />
         </>

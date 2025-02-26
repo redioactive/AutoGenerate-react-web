@@ -4,9 +4,8 @@ import { userLogin } from '@/services/userService';
 import { Link } from '@@/exports';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginForm, ProFormText } from '@ant-design/pro-components';
-import { useModel } from '@umijs/max';
+import { history, useLocation, useModel } from '@umijs/max';
 import { message } from 'antd';
-import {useLocation} from '@umijs/max';
 
 /**
  * 用户登录页面
@@ -24,13 +23,28 @@ export default () => {
     const hide = message.loading('登录中');
     try {
       const res = await userLogin({ ...fields });
+      const { data } = res;
+      const { accessToken } = data;
+
       message.success('登录成功');
       setInitialState({
         ...initialState,
         loginUser: res.data,
       } as InitialState);
+
+      //存储用户信息
+      localStorage.setItem('loginUser', JSON.stringify(res.data));
+      localStorage.setItem('accessToken', accessToken!);
+
+      //更新全局状态
+      await setInitialState({
+        ...initialState,
+        loginUser: res.data,
+      } as InitialState);
+
       // 重定向到之前页面
-      window.location.href = searchParams.get('redirect') ?? '/';
+      // window.location.href = searchParams.get('redirect') ?? '/';
+      history.push(searchParams.get('redirect') || '/');
     } catch (e: any) {
       message.error(e.message);
     } finally {
