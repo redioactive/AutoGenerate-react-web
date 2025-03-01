@@ -1,5 +1,5 @@
-import {GenerateResultCard} from '@/components/GenerateResultCard';
-import {ReportModal} from '@/components/ReportModal';
+import { GenerateResultCard } from '@/components/GenerateResultCard';
+import { ReportModal } from '@/components/ReportModal';
 import { deleteDict, generateCreateDictTableSql } from '@/services/dictService';
 import { useModel } from '@umijs/max';
 import {
@@ -150,7 +150,7 @@ const DictList: React.FC<Props> = (props) => {
       />
       <Drawer
         title="生成字典表成功"
-        contentWrapperStyle={{ width: '80%', minWidth: 320 }}
+        styles={{ wrapper: { width: '80%', minWidth: 320 } }}
         open={!!result}
         onClose={() => setResult(undefined)}
       >

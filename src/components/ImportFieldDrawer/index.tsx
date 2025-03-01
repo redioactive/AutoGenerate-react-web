@@ -1,7 +1,7 @@
-import {FieldInfoCard} from '@/components/FieldInfoCard';
+import { FieldInfoCard } from '@/components/FieldInfoCard';
 import { listMyFieldInfoByPage } from '@/services/fieldInfoService';
 import { useModel } from '@@/exports';
-import {  message,Drawer } from 'antd';
+import { Drawer, message } from 'antd';
 import React from 'react';
 
 interface Props {
@@ -29,28 +29,29 @@ export const ImportFieldDrawer: React.FC<Props> = (props) => {
    */
   const loadMyData = loginUser
     ? (
-      searchParams: FieldInfoType.FieldInfoQueryRequest,
-      setDataList: (dataList: FieldInfoType.FieldInfo[]) => void,
-      setTotal: (total: number) => void,
-    ) => {
-      listMyFieldInfoByPage(searchParams)
-        .then((res) => {
-          setDataList(res.data.records);
-          setTotal(res.data.total);
-        })
-        .catch((e) => {
-          message.error('加载失败，' + e.message);
-        });
-    }
+        searchParams: FieldInfoType.FieldInfoQueryRequest,
+        setDataList: (dataList: FieldInfoType.FieldInfo[]) => void,
+        setTotal: (total: number) => void,
+      ) => {
+        listMyFieldInfoByPage(searchParams)
+          .then((res) => {
+            setDataList(res.data.records);
+            setTotal(res.data.total);
+          })
+          .catch((e) => {
+            message.error('加载失败，' + e.message);
+          });
+      }
     : undefined;
 
   return (
     <Drawer
-    title="导入字段"
-    contentWrapperStyle={{width:'60%',minWidth:320}}
-    open={visible}
-    onClose={onClose}>
+      title="导入字段"
+      styles={{ wrapper: { width: '60%', minWidth: 320 } }}
+      open={visible}
+      onClose={onClose}
+    >
       <FieldInfoCard onLoad={loadMyData} onImport={onImport}></FieldInfoCard>
     </Drawer>
-  )
+  );
 };

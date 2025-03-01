@@ -1,4 +1,4 @@
-import {TableInfoCard} from '@/components/TableInfoCard';
+import { TableInfoCard } from '@/components/TableInfoCard';
 import { listMyTableInfoByPage } from '@/services/tableInfoService';
 import { useModel } from '@@/exports';
 import { Drawer, message } from 'antd';
@@ -29,25 +29,25 @@ export const ImportTableDrawer: React.FC<Props> = (props) => {
    */
   const loadMyData = loginUser
     ? (
-      searchParams: TableInfoType.TableInfoQueryRequest,
-      setDataList: (dataList: TableInfoType.TableInfo[]) => void,
-      setTotal: (total: number) => void,
-    ) => {
-      listMyTableInfoByPage(searchParams)
-        .then((res) => {
-          setDataList(res.data.records);
-          setTotal(res.data.total);
-        })
-        .catch((e) => {
-          message.error('加载失败，' + e.message);
-        });
-    }
+        searchParams: TableInfoType.TableInfoQueryRequest,
+        setDataList: (dataList: TableInfoType.TableInfo[]) => void,
+        setTotal: (total: number) => void,
+      ) => {
+        listMyTableInfoByPage(searchParams)
+          .then((res) => {
+            setDataList(res.data.records);
+            setTotal(res.data.total);
+          })
+          .catch((e) => {
+            message.error('加载失败，' + e.message);
+          });
+      }
     : undefined;
 
   return (
     <Drawer
       title="导入表"
-      contentWrapperStyle={{ width: '60%', minWidth: 320 }}
+      styles={{ wrapper: { width: '60%', minWidth: 320 } }}
       open={visible}
       onClose={onClose}
     >
@@ -55,4 +55,3 @@ export const ImportTableDrawer: React.FC<Props> = (props) => {
     </Drawer>
   );
 };
-

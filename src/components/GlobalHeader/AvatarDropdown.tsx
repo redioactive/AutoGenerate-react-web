@@ -2,10 +2,10 @@ import { userLogout } from '@/services/userService';
 import { Link } from '@@/exports';
 import { LogoutOutlined } from '@ant-design/icons';
 import { history, useModel } from '@umijs/max';
-import { Avatar, Button, Dropdown, Menu, message } from 'antd';
+import { Avatar, Button, Dropdown, MenuProps, message } from 'antd';
 import classNames from 'classnames';
 import queryString from 'query-string';
-import React from 'react';
+import React, { useRef } from 'react';
 // @ts-ignore
 import styles from './index.less';
 
@@ -43,31 +43,36 @@ export const AvatarDropdown: React.FC = () => {
     }
   };
 
+  const avatarRef = useRef<HTMLDivElement>(null);
   /**
    * 下拉菜单
    * */
-  const menuHeaderDropdown = loginUser ? (
-    <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>
-      <Menu.Item key="current" disabled>
-        {loginUser.userName ?? '无名'}
-      </Menu.Item>
-      <Menu.Item key="logout">
-        <span style={{ color: 'red' }}>
-          <LogoutOutlined />
-          退出登录
-        </span>
-      </Menu.Item>
-    </Menu>
-  ) : (
-    <></>
-  );
+  const menuHeaderDropdown: MenuProps['items'] = loginUser
+    ? [
+        {
+          key: 'current',
+          label: loginUser.userName ?? '无名',
+          disabled: true,
+        },
+        {
+          key: 'logout',
+          label: (
+            <span style={{ color: 'red' }}>
+              <LogoutOutlined />
+              退出登录
+            </span>
+          ),
+          onClick: onMenuClick,
+        },
+      ]
+    : [];
   return loginUser ? (
     <Dropdown
       overlayClassName={classNames(styles.container)}
-      overlay={menuHeaderDropdown}
+      menu={{ items: menuHeaderDropdown }}
     >
       <div className={`${styles.action} ${styles.account}`}>
-        <Avatar>{loginUser.userName?.[0] ?? '无'}</Avatar>
+        <Avatar ref={avatarRef}>{loginUser.userName?.[0] ?? '无'}</Avatar>
       </div>
     </Dropdown>
   ) : (
