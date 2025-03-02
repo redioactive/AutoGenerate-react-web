@@ -61,6 +61,9 @@ export async function listMyDictByPage(params: DictType.DictQueryRequest) {
 export async function listDictByPage(params: DictType.DictQueryRequest) {
   return request<BaseResponse<PageInfo<DictType.Dict>>>('/dict/list/page', {
     method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     params,
   });
 }

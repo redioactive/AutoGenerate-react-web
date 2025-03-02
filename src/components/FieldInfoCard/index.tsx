@@ -1,46 +1,51 @@
-import {FieldInfoList} from '@/components/FieldInfoList'
-import {listFieldInfoByPage} from '@/services/fieldInfoService';
-import {useModel} from '@umijs/plugins/libs/model';
-import {Button,Card,Empty,Input,message,Space} from 'antd';
+import { FieldInfoList } from '@/components/FieldInfoList';
+import { listFieldInfoByPage } from '@/services/fieldInfoService';
+import { Link, useModel } from '@umijs/max';
+import { Button, Card, Empty, Input, message, Space } from 'antd';
 import React, { useEffect, useState } from 'react';
-import './index.less'
-import { Link } from '@umijs/max';
+import './index.less';
 
 //默认分页大小
 const DEFAULT_PAGE_SIZE = 10;
-interface Props{
-  title?:string;
-  needLogin?:boolean;
-  showTag?:boolean;
+interface Props {
+  title?: string;
+  needLogin?: boolean;
+  showTag?: boolean;
   onLoad?: (
-    searchParams:FieldInfoType.FieldInfoQueryRequest,
-    setDataList:(dataList:FieldInfoType.FieldInfo[]) => void,
-    setTotal:(total:number) => void,
+    searchParams: FieldInfoType.FieldInfoQueryRequest,
+    setDataList: (dataList: FieldInfoType.FieldInfo[]) => void,
+    setTotal: (total: number) => void,
   ) => void;
-  onImport?:(values:FieldInfoType.FieldInfo) => void;
+  onImport?: (values: FieldInfoType.FieldInfo) => void;
 }
 
 /**
  * 表信息卡片
  * @constructor
  * @auth  https://github.com/redioactive*/
-export const FieldInfoCard :React.FC<Props> = (props) => {
-  const {title = '字段信息列表', needLogin=false,showTag=true,onLoad,onImport} = props;
+export const FieldInfoCard: React.FC<Props> = (props) => {
+  const {
+    title = '字段信息列表',
+    needLogin = false,
+    showTag = true,
+    onLoad,
+    onImport,
+  } = props;
 
   //公开数据
-  const [dataList,setDataList] = useState<FieldInfoType.FieldInfo[]>([]);
-  const [total,setTotal] = useState<number>(0);
+  const [dataList, setDataList] = useState<FieldInfoType.FieldInfo[]>([]);
+  const [total, setTotal] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
-  const initSearchParams:FieldInfoType.FieldInfoQueryRequest = {
-    current :1 ,
-    pageSize:DEFAULT_PAGE_SIZE,
-    sortField:'createTime',
-    sortOrder:'descend'
+  const initSearchParams: FieldInfoType.FieldInfoQueryRequest = {
+    current: 1,
+    pageSize: DEFAULT_PAGE_SIZE,
+    sortField: 'createTime',
+    sortOrder: 'descend',
   };
-  const [searchParams,setSearchParmas] =
-  useState<FieldInfoType.FieldInfoQueryRequest>(initSearchParams);
+  const [searchParams, setSearchParmas] =
+    useState<FieldInfoType.FieldInfoQueryRequest>(initSearchParams);
 
-  const {initialState} = useModel('@@initialState');
+  const { initialState } = useModel('@@initialState');
   const loginUser = initialState?.loginUser;
 
   /**
@@ -49,28 +54,28 @@ export const FieldInfoCard :React.FC<Props> = (props) => {
   const innerOnLoad = () => {
     listFieldInfoByPage({
       ...searchParams,
-      reviewStatus:1,
+      reviewStatus: 1,
     })
       .then((res) => {
         setDataList(res.data.records);
         setTotal(res.data.total);
       })
       .catch((e) => {
-        message.error(`加载失败${e.message}`)
-      })
-  }
+        message.error(`加载失败${e.message}`);
+      });
+  };
   //加载数据
   useEffect(() => {
     //需要登录
-    if(needLogin && !loginUser) return
+    if (needLogin && !loginUser) return;
     setLoading(true);
-    if(onLoad) {
-      onLoad(searchParams,setDataList,setTotal)
-    }else {
+    if (onLoad) {
+      onLoad(searchParams, setDataList, setTotal);
+    } else {
       innerOnLoad();
     }
     setLoading(false);
-  },[searchParams])
+  }, [searchParams]);
   return (
     <div className="field-info-card">
       <Card
@@ -126,4 +131,4 @@ export const FieldInfoCard :React.FC<Props> = (props) => {
       </Card>
     </div>
   );
-}
+};

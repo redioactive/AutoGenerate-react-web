@@ -179,8 +179,8 @@ export const GenerateResultCard: React.FC<Props> = (props) => {
           ),
         },
         {
-          label: 'Java 代码',
-          key: 'javaCode',
+          label: 'Nestjs 代码',
+          key: 'NestCode',
           children: (
             <>
               <Collapse defaultActiveKey={['1', '2']}>

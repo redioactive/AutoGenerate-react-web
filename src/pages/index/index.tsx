@@ -9,10 +9,10 @@ import { getTableInfoById } from '@/services/tableInfoService';
 import { PageContainer } from '@ant-design/pro-components';
 import { useLocation } from '@umijs/max';
 import {
-  BackTop,
   Button,
   Card,
   Col,
+  FloatButton,
   message,
   Radio,
   RadioChangeEvent,
@@ -180,7 +180,7 @@ const IndexPage: React.FC = () => {
             <GenerateResultCard result={result} loading={genLoading} />
           </Col>
         </Row>
-        <BackTop />
+        <FloatButton.BackTop />
       </PageContainer>
       <AutoInputModal
         onSubmit={importTableSchema}

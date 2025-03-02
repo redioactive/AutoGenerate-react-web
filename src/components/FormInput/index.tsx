@@ -1,6 +1,6 @@
-import {FieldInfoCreateModal} from '@/components/FieldInfoModel/FieldInfoCreateModal'
-import {ImportFieldDrawer} from '@/components/ImportFieldDrawer';
-import {TableInfoCreateModal} from '@/components/TableInfoModal/TableInfoCreateModal';
+import { FieldInfoCreateModal } from '@/components/FieldInfoModel/FieldInfoCreateModal';
+import { ImportFieldDrawer } from '@/components/ImportFieldDrawer';
+import { TableInfoCreateModal } from '@/components/TableInfoModal/TableInfoCreateModal';
 import {
   COMMON_FIELD_LIST,
   DEFAULT_ADD_FIELD,
@@ -164,72 +164,70 @@ export const FormInput: React.FC<Props> = forwardRef((props, ref) => {
                 onChange={(key) => {
                   setActiveKey(key as []);
                 }}
-              >
-                {fields.map((field, index) => (
-                  <Collapse.Panel
-                    key={field.key}
-                    header={
-                      <Form.Item
-                        style={{ maxWidth: 320, marginBottom: 0 }}
-                        label="字段名"
-                        name={[field.name, 'fieldName']}
-                        rules={[{ required: true }]}
+                items={fields.map((field, index) => ({
+                  key: field.key,
+                  header: (
+                    <Form.Item
+                      style={{ maxWidth: 320, marginBottom: 0 }}
+                      label="字段名"
+                      name={[field.name, 'fieldName']}
+                      rules={[{ required: true }]}
+                    >
+                      <Input placeholder="建议用纯英文" />
+                    </Form.Item>
+                  ),
+                  extra: (
+                    <Space className="field-toolbar">
+                      {index > 0 && (
+                        <Button
+                          type="text"
+                          onClick={(e) => {
+                            move(index, index - 1);
+                            e.stopPropagation();
+                          }}
+                        >
+                          <UpOutlined />
+                        </Button>
+                      )}
+                      {index < fields.length - 1 && (
+                        <Button
+                          type="text"
+                          onClick={(e) => {
+                            move(index, index + 1);
+                            e.stopPropagation();
+                          }}
+                        >
+                          <DownOutlined />
+                        </Button>
+                      )}
+                      <Button
+                        type="text"
+                        onClick={(e) => {
+                          const fieldInfo =
+                            form.getFieldsValue().fieldList[index];
+                          setCreateFieldInfo({
+                            name: fieldInfo.comment,
+                            content: JSON.stringify(fieldInfo),
+                          } as FieldInfoType.FieldInfo);
+                          setFieldInfoCreateModalVisible(true);
+                          e.stopPropagation();
+                        }}
                       >
-                        <Input placeholder="建议用纯英文" />
-                      </Form.Item>
-                    }
-                    extra={
-                      <Space className="field-toolbar">
-                        {index > 0 && (
-                          <Button
-                            type="text"
-                            onClick={(e) => {
-                              move(index, index - 1);
-                              e.stopPropagation();
-                            }}
-                          >
-                            <UpOutlined />
-                          </Button>
-                        )}
-                        {index < fields.length - 1 && (
-                          <Button
-                            type="text"
-                            onClick={(e) => {
-                              move(index, index + 1);
-                              e.stopPropagation();
-                            }}
-                          >
-                            <DownOutlined />
-                          </Button>
-                        )}
-                        <Button
-                          type="text"
-                          onClick={(e) => {
-                            const fieldInfo =
-                              form.getFieldsValue().fieldList[index];
-                            setCreateFieldInfo({
-                              name: fieldInfo.comment,
-                              content: JSON.stringify(fieldInfo),
-                            } as FieldInfoType.FieldInfo);
-                            setFieldInfoCreateModalVisible(true);
-                            e.stopPropagation();
-                          }}
-                        >
-                          保存
-                        </Button>
-                        <Button
-                          type="text"
-                          danger
-                          onClick={(e) => {
-                            remove(field.name);
-                            e.stopPropagation();
-                          }}
-                        >
-                          删除
-                        </Button>
-                      </Space>
-                    }
-                  >
+                        保存
+                      </Button>
+                      <Button
+                        type="text"
+                        danger
+                        onClick={(e) => {
+                          remove(field.name);
+                          e.stopPropagation();
+                        }}
+                      >
+                        删除
+                      </Button>
+                    </Space>
+                  ),
+                  children: (
                     <Space key={field.key} align="baseline" wrap size={[24, 0]}>
                       <Form.Item
                         label="字段类型"
@@ -414,9 +412,9 @@ export const FormInput: React.FC<Props> = forwardRef((props, ref) => {
                         }}
                       </Form.Item>
                     </Space>
-                  </Collapse.Panel>
-                ))}
-              </Collapse>
+                  ),
+                }))}
+              />
               <Form.Item>
                 <Space
                   direction="vertical"
@@ -518,5 +516,3 @@ export const FormInput: React.FC<Props> = forwardRef((props, ref) => {
     </>
   );
 });
-
-
