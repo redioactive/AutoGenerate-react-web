@@ -60,8 +60,8 @@ export const FormInput: React.FC<Props> = forwardRef((props, ref) => {
     useState(false);
   // 导入字段的位置
   const [importIndex, setImportIndex] = useState(0);
-  // 字段折叠面板展开的键
-  const [activeKey, setActiveKey] = useState([]);
+  // 字段折叠面板展开的键（类型设为 any[]，也可根据具体情况做严格类型）
+  const [activeKey, setActiveKey] = useState<any[]>([]);
 
   const onFinish = (values: any) => {
     if (!values.fieldList || values.fieldList.length < 1) {
@@ -97,27 +97,21 @@ export const FormInput: React.FC<Props> = forwardRef((props, ref) => {
   /**
    * 字段类型选项
    */
-  const fieldTypeOptions = FIELD_TYPE_LIST.map((field) => {
-    return {
-      label: field,
-      value: field,
-    };
-  });
+  const fieldTypeOptions = FIELD_TYPE_LIST.map((field) => ({
+    label: field,
+    value: field,
+  }));
 
   /**
-   * 字段类型选项
+   * 字段 onUpdate 选项
    */
-  const onUpdateOptions = ON_UPDATE_LIST.map((field) => {
-    return {
-      label: field,
-      value: field,
-    };
-  });
+  const onUpdateOptions = ON_UPDATE_LIST.map((field) => ({
+    label: field,
+    value: field,
+  }));
 
   /**
    * AutoComplete 过滤函数
-   * @param inputValue
-   * @param option
    */
   const filterOption = (inputValue: string, option: any) =>
     option!.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1;
@@ -162,11 +156,11 @@ export const FormInput: React.FC<Props> = forwardRef((props, ref) => {
               <Collapse
                 activeKey={activeKey}
                 onChange={(key) => {
-                  setActiveKey(key as []);
+                  setActiveKey(key as any[]);
                 }}
                 items={fields.map((field, index) => ({
                   key: field.key,
-                  header: (
+                  label: (
                     <Form.Item
                       style={{ maxWidth: 320, marginBottom: 0 }}
                       label="字段名"
@@ -227,7 +221,8 @@ export const FormInput: React.FC<Props> = forwardRef((props, ref) => {
                       </Button>
                     </Space>
                   ),
-                  children: (
+                  // 将面板内容以数组形式传入 items 属性，避免使用 children
+                  items: [
                     <Space key={field.key} align="baseline" wrap size={[24, 0]}>
                       <Form.Item
                         label="字段类型"
@@ -375,9 +370,7 @@ export const FormInput: React.FC<Props> = forwardRef((props, ref) => {
                                       <Space
                                         align="center"
                                         size={24}
-                                        style={{
-                                          marginLeft: 8,
-                                        }}
+                                        style={{ marginLeft: 8 }}
                                       >
                                         <Button
                                           size="small"
@@ -411,8 +404,8 @@ export const FormInput: React.FC<Props> = forwardRef((props, ref) => {
                           return <></>;
                         }}
                       </Form.Item>
-                    </Space>
-                  ),
+                    </Space>,
+                  ],
                 }))}
               />
               <Form.Item>

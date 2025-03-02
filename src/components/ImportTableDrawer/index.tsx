@@ -1,6 +1,6 @@
 import { TableInfoCard } from '@/components/TableInfoCard';
 import { listMyTableInfoByPage } from '@/services/tableInfoService';
-import { useModel } from '@@/exports';
+import { useModel } from '@umijs/max';
 import { Drawer, message } from 'antd';
 import React from 'react';
 

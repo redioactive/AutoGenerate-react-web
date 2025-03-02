@@ -7,7 +7,6 @@ import { SqlInputModal } from '@/components/SqlInputModal';
 import { generateBySchema, getSchemaByExcel } from '@/services/sqlService';
 import { getTableInfoById } from '@/services/tableInfoService';
 import { PageContainer } from '@ant-design/pro-components';
-import { useLocation } from '@umijs/max';
 import {
   Button,
   Card,
@@ -24,6 +23,7 @@ import {
   UploadProps,
 } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './index.less';
 
 const IndexPage: React.FC = () => {

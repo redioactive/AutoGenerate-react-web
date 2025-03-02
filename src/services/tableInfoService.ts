@@ -40,7 +40,7 @@ export async function listMyAddTableInfoByPage(
   params: TableInfoType.TableInfoQueryRequest,
 ) {
   return request<BaseResponse<PageInfo<TableInfoType.TableInfo>>>(
-    '/table_info/my/add/list/page',
+    '/tableInfo/my/list/page',
     {
       method: 'GET',
       params,

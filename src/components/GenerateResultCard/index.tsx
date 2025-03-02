@@ -22,11 +22,10 @@ interface Props {
 
 /**
  * @constructor
- * @author https://github.com/redioactive
+ * 生成结果展示卡片组件
  */
 export const GenerateResultCard: React.FC<Props> = (props) => {
   const { result, loading = false, showCard = true } = props;
-
   /**
    * 下载 excel 数据
    */
@@ -81,54 +80,64 @@ export const GenerateResultCard: React.FC<Props> = (props) => {
                     if (!result) return;
                     copy(`${result.createSql}\n\n${result.insertSql}`);
                     e.stopPropagation();
-                    message.success('已复制到剪切版');
+                    message.success('已复制到剪切板');
                   }}
                 >
                   复制全部
                 </Button>
               </Space>
               <div style={{ marginTop: 16 }} />
-              <Collapse defaultActiveKey={['1', '2']}>
-                <Collapse.Panel
-                  header="建表语句"
-                  key="1"
-                  className="code-collapse-panel"
-                  extra={
-                    <Button
-                      size="small"
-                      icon={<CopyOutlined />}
-                      onClick={(e) => {
-                        copy(result?.createSql);
-                        e.stopPropagation();
-                        message.success('已复制到剪切版');
-                      }}
-                    >
-                      复制
-                    </Button>
-                  }
-                >
-                  <CodeEditor value={result.createSql} language="sql" />
-                </Collapse.Panel>
-                <Collapse.Panel
-                  header="插入语句"
-                  key="2"
-                  className="code-collapse-panel"
-                  extra={
-                    <Button
-                      size="small"
-                      icon={<CopyOutlined />}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        message.success('已复制到剪切版');
-                      }}
-                    >
-                      复制
-                    </Button>
-                  }
-                >
-                  <CodeEditor value={result.insertSql} language="sql" />
-                </Collapse.Panel>
-              </Collapse>
+              <Collapse
+                defaultActiveKey={['1', '2']}
+                items={[
+                  {
+                    key: '1',
+                    label: '建表语句',
+                    className: 'code-collapse-panel',
+                    extra: (
+                      <Button
+                        key="copy-create-sql"
+                        size="small"
+                        icon={<CopyOutlined />}
+                        onClick={(e) => {
+                          copy(result?.createSql);
+                          e.stopPropagation();
+                          message.success('已复制到剪切板');
+                        }}
+                      >
+                        复制
+                      </Button>
+                    ),
+                    children: (
+                      <CodeEditor
+                        key="create-sql-editor"
+                        value={result.createSql}
+                        language="sql"
+                      />
+                    ),
+                  },
+                  {
+                    key: '2',
+                    label: '插入语句',
+                    className: 'code-collapse-panel',
+                    extra: (
+                      <Button
+                        size="small"
+                        icon={<CopyOutlined />}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          message.success('已复制到剪切板');
+                        }}
+                      >
+                        复制
+                      </Button>
+                    ),
+                    children: (
+                      <CodeEditor value={result.insertSql} language="sql" />
+                    ),
+                  },
+                ]}
+              />
             </>
           ),
         },
@@ -136,7 +145,7 @@ export const GenerateResultCard: React.FC<Props> = (props) => {
           label: '模拟数据',
           key: 'mockData',
           children: (
-            <>
+            <React.Fragment key="mockData">
               <Space>
                 <Button
                   icon={<DownloadOutlined />}
@@ -146,13 +155,16 @@ export const GenerateResultCard: React.FC<Props> = (props) => {
                   下载数据
                 </Button>
               </Space>
-              <div style={{ marginTop: 16 }} />
+              <div style={{ marginTop: 16 }} key="spacer" />
               <Table
                 bordered={true}
-                dataSource={result.dataList}
+                dataSource={result.dataList.map((item, index) => ({
+                  ...item,
+                  key: item.id || index, // 确保每项数据都有唯一的 key
+                }))}
                 columns={schemaToColumn(result.tableSchema)}
               />
-            </>
+            </React.Fragment>
           ),
         },
         {
@@ -167,7 +179,7 @@ export const GenerateResultCard: React.FC<Props> = (props) => {
                   onClick={(e) => {
                     copy(result?.dataJson);
                     e.stopPropagation();
-                    message.success('已复制到剪切版');
+                    message.success('已复制到剪切板');
                   }}
                 >
                   复制代码
@@ -183,48 +195,59 @@ export const GenerateResultCard: React.FC<Props> = (props) => {
           key: 'NestCode',
           children: (
             <>
-              <Collapse defaultActiveKey={['1', '2']}>
-                <Collapse.Panel
-                  header="实体代码"
-                  key="1"
-                  className="code-collapse-panel"
-                  extra={
-                    <Button
-                      size="small"
-                      icon={<CopyOutlined />}
-                      onClick={(e) => {
-                        copy(result?.nestEntityCode);
-                        e.stopPropagation();
-                        message.success('已复制到剪切板');
-                      }}
-                    >
-                      复制
-                    </Button>
-                  }
-                >
-                  <CodeEditor value={result.nestEntityCode} language="nest" />
-                </Collapse.Panel>
-                <Collapse.Panel
-                  header="对象代码"
-                  key="2"
-                  className="code-collapse-panel"
-                  extra={
-                    <Button
-                      size="small"
-                      icon={<CopyOutlined />}
-                      onClick={(e) => {
-                        copy(result?.nestObjectCode);
-                        e.stopPropagation();
-                        message.success('已复制到剪切版');
-                      }}
-                    >
-                      复制
-                    </Button>
-                  }
-                >
-                  <CodeEditor value={result.nestObjectCode} language="nest" />
-                </Collapse.Panel>
-              </Collapse>
+              <Collapse
+                defaultActiveKey={['1', '2']}
+                items={[
+                  {
+                    key: '1',
+                    label: '实体代码',
+                    className: 'code-collapse-panel',
+                    extra: (
+                      <Button
+                        size="small"
+                        icon={<CopyOutlined />}
+                        onClick={(e) => {
+                          copy(result?.nestEntityCode);
+                          e.stopPropagation();
+                          message.success('已复制到剪切板');
+                        }}
+                      >
+                        复制
+                      </Button>
+                    ),
+                    children: (
+                      <CodeEditor
+                        value={result.nestEntityCode}
+                        language="nest"
+                      />
+                    ),
+                  },
+                  {
+                    key: '2',
+                    label: '对象代码',
+                    className: 'code-collapse-panel',
+                    extra: (
+                      <Button
+                        size="small"
+                        icon={<CopyOutlined />}
+                        onClick={(e) => {
+                          copy(result?.nestObjectCode);
+                          e.stopPropagation();
+                          message.success('已复制到剪切板');
+                        }}
+                      >
+                        复制
+                      </Button>
+                    ),
+                    children: (
+                      <CodeEditor
+                        value={result.nestObjectCode}
+                        language="nest"
+                      />
+                    ),
+                  },
+                ]}
+              />
             </>
           ),
         },
@@ -233,31 +256,35 @@ export const GenerateResultCard: React.FC<Props> = (props) => {
           key: 'frontendCode',
           children: (
             <>
-              <Collapse defaultActiveKey={['1']}>
-                <Collapse.Panel
-                  header="Typescript 类型代码"
-                  key="1"
-                  className="code-collapse-panel"
-                  extra={
-                    <Button
-                      size="small"
-                      icon={<CopyOutlined />}
-                      onClick={(e) => {
-                        copy(result?.typescriptTypeCode);
-                        e.stopPropagation();
-                        message.success('已复制到剪切版');
-                      }}
-                    >
-                      复制
-                    </Button>
-                  }
-                >
-                  <CodeEditor
-                    value={result.typescriptTypeCode}
-                    language="typescript"
-                  />
-                </Collapse.Panel>
-              </Collapse>
+              <Collapse
+                defaultActiveKey={['1']}
+                items={[
+                  {
+                    key: '1',
+                    label: 'Typescript 类型代码',
+                    className: 'code-collapse-panel',
+                    extra: (
+                      <Button
+                        size="small"
+                        icon={<CopyOutlined />}
+                        onClick={(e) => {
+                          copy(result?.typescriptTypeCode);
+                          e.stopPropagation();
+                          message.success('已复制到剪切板');
+                        }}
+                      >
+                        复制
+                      </Button>
+                    ),
+                    children: (
+                      <CodeEditor
+                        value={result.typescriptTypeCode}
+                        language="typescript"
+                      />
+                    ),
+                  },
+                ]}
+              />
             </>
           ),
         },
